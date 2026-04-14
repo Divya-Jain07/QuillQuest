@@ -4,16 +4,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        paper: "#F5E6CC",
-        card: "#EAD7B7",
-        section: "#DFCCAA",
+        paper: "#FDFAF5",
+        card: "#FFF8EE",
+        section: "#F0E6D3",
         ink: "#3E2F1C",
-        "ink-secondary": "#6B5B3E",
+        "ink-secondary": "#7A6652",
         "ink-dark": "#2B2114",
         brown: "#A67B5B",
         "brown-deep": "#8C5A3C",
         "brown-gold": "#C2A878",
         rose: "#C08081",
+        "rose-light": "#E8C4C4",
         sage: "#A3B18A",
         mustard: "#D4A373",
         "faded-blue": "#7C96AB",

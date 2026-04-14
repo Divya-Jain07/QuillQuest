@@ -11,17 +11,11 @@ export default function Login() {
   const handleLogin = async () => {
     setError("");
     setLoading(true);
-
     try {
       const response = await axios.post("http://localhost:5000/api/auth/login", form);
-      
-      // Save token and user info to localStorage
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("user", JSON.stringify(response.data.user));
-
-      // Redirect to home page
       navigate("/home");
-
     } catch (err) {
       setError(err.response?.data?.message || "Something went wrong");
     } finally {
@@ -31,28 +25,22 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-paper font-body">
-      <div className="bg-card p-8 rounded-2xl shadow-lg w-96 border border-section">
+      <div className="bg-card p-8 rounded-2xl shadow-sm w-96 border border-section">
 
-        <h1 className="font-heading text-4xl text-ink-dark text-center mb-1">
-          Quill Quest
-        </h1>
-        <p className="text-ink-secondary text-center text-sm mb-8">
-          Your literary adventure awaits
-        </p>
+        <h1 className="font-heading text-4xl text-ink-dark text-center mb-1">Quill Quest</h1>
+        <p className="text-ink-secondary text-center text-sm mb-8">Your literary adventure awaits</p>
 
-        {error && (
-          <p className="text-red-500 text-sm text-center mb-4">{error}</p>
-        )}
+        {error && <p className="text-red-400 text-sm text-center mb-4">{error}</p>}
 
         <input
-          className="w-full mb-4 px-4 py-2 rounded-lg border border-section bg-paper text-ink placeholder-ink-secondary focus:outline-none focus:ring-2 focus:ring-brown"
+          className="w-full mb-4 px-4 py-2 rounded-lg border border-section bg-paper text-ink placeholder-ink-secondary focus:outline-none focus:ring-2 focus:ring-rose"
           placeholder="Email"
           value={form.email}
           onChange={(e) => setForm({ ...form, email: e.target.value })}
         />
         <input
           type="password"
-          className="w-full mb-6 px-4 py-2 rounded-lg border border-section bg-paper text-ink placeholder-ink-secondary focus:outline-none focus:ring-2 focus:ring-brown"
+          className="w-full mb-6 px-4 py-2 rounded-lg border border-section bg-paper text-ink placeholder-ink-secondary focus:outline-none focus:ring-2 focus:ring-rose"
           placeholder="Password"
           value={form.password}
           onChange={(e) => setForm({ ...form, password: e.target.value })}
@@ -61,17 +49,14 @@ export default function Login() {
         <button
           onClick={handleLogin}
           disabled={loading}
-          className="w-full bg-brown hover:bg-mustard text-paper font-bold py-2 rounded-lg transition-colors duration-200 disabled:opacity-50"
+          className="w-full bg-rose hover:bg-rose-light hover:text-ink text-white font-bold py-2 rounded-lg transition-colors duration-200 disabled:opacity-50"
         >
           {loading ? "Logging in..." : "Login"}
         </button>
 
         <p className="text-center text-ink-secondary text-sm mt-4">
           Don't have an account?{" "}
-          <span
-            onClick={() => navigate("/signup")}
-            className="text-brown-deep font-bold cursor-pointer hover:text-mustard"
-          >
+          <span onClick={() => navigate("/signup")} className="text-rose font-bold cursor-pointer hover:text-brown">
             Sign up
           </span>
         </p>
